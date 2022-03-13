@@ -4,7 +4,7 @@ void init_ir(ir_cfg_t* cfg)
 {
 	SIM->SCGC5 |= cfg->scgc_mask;
 	
-	cfg->port->PCR[cfg->pin] &= PORT_PCR_MUX(1);
+	cfg->port->PCR[cfg->pin] |= PORT_PCR_MUX(1);
 	
 	cfg->pt->PDDR &= ~(uint32_t)(1 << cfg->pin);
 }

@@ -4,9 +4,9 @@ Component: ARM Compiler 6.16 Tool: armlink [5dfeaa00]
 
 Section Cross References
 
-    main.o(.text.main) refers to ir_sensor.o(.text.init_ir_array) for init_ir_array
-    main.o(.text.main) refers to ir_sensor.o(.text.get_position) for get_position
-    main.o(.text.main) refers to main.o(.rodata..L__const.main.ir_cfg) for [Anonymous Symbol]
+    main.o(.text.main) refers to ir_sensor.o(.text.init_ir) for init_ir
+    main.o(.text.main) refers to ir_sensor.o(.text.read_ir) for read_ir
+    main.o(.text.main) refers to main.o(.rodata.cst16) for [Anonymous Symbol]
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
     ir_sensor.o(.ARM.exidx.text.init_ir) refers to ir_sensor.o(.text.init_ir) for [Anonymous Symbol]
     ir_sensor.o(.ARM.exidx.text.read_ir) refers to ir_sensor.o(.text.read_ir) for [Anonymous Symbol]
@@ -158,7 +158,9 @@ Removing Unused input sections from the image.
     Removing ir_sensor.o(.text), (0 bytes).
     Removing ir_sensor.o(.ARM.exidx.text.init_ir), (8 bytes).
     Removing ir_sensor.o(.ARM.exidx.text.read_ir), (8 bytes).
+    Removing ir_sensor.o(.text.init_ir_array), (54 bytes).
     Removing ir_sensor.o(.ARM.exidx.text.init_ir_array), (8 bytes).
+    Removing ir_sensor.o(.text.get_position), (132 bytes).
     Removing ir_sensor.o(.ARM.exidx.text.get_position), (8 bytes).
     Removing system_mkl25z4.o(.text), (0 bytes).
     Removing system_mkl25z4.o(.ARM.exidx.text.SystemInit), (8 bytes).
@@ -166,7 +168,7 @@ Removing Unused input sections from the image.
     Removing system_mkl25z4.o(.ARM.exidx.text.SystemCoreClockUpdate), (8 bytes).
     Removing system_mkl25z4.o(.data.SystemCoreClock), (4 bytes).
 
-13 unused section(s) (total 620 bytes) removed from the image.
+15 unused section(s) (total 806 bytes) removed from the image.
 
 ==============================================================================
 
@@ -288,28 +290,21 @@ Image Symbol Table
     .ARM.Collect$$rtexit$$00000004           0x00000140   Section        6  rtexit2.o(.ARM.Collect$$rtexit$$00000004)
     .text                                    0x00000148   Section       64  startup_mkl25z4.o(.text)
     .text                                    0x00000188   Section        0  heapauxi.o(.text)
-    .text                                    0x00000190   Section        0  fdiv.o(.text)
-    .text                                    0x000002f0   Section        0  fflti.o(.text)
-    .text                                    0x0000034e   Section       62  sys_stackheap_outer.o(.text)
-    .text                                    0x0000038c   Section        0  exit.o(.text)
-    .text                                    0x0000039c   Section        8  libspace.o(.text)
-    .text                                    0x000003a4   Section        0  sys_exit.o(.text)
-    .text                                    0x000003b0   Section        2  use_no_semi.o(.text)
-    .text                                    0x000003b2   Section        0  indicate_semi.o(.text)
-    [Anonymous Symbol]                       0x000003b4   Section        0  system_mkl25z4.o(.text.SystemInit)
-    __arm_cp.0_0                             0x000003bc   Number         4  system_mkl25z4.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x000003c0   Section        0  ir_sensor.o(.text.init_ir)
-    __arm_cp.0_0                             0x000003f8   Number         4  ir_sensor.o(.text.init_ir)
-    x$fpl$usenofp                            0x000003fc   Section        0  usenofp.o(x$fpl$usenofp)
+    .text                                    0x0000018e   Section       62  sys_stackheap_outer.o(.text)
+    .text                                    0x000001cc   Section        0  exit.o(.text)
+    .text                                    0x000001dc   Section        8  libspace.o(.text)
+    .text                                    0x000001e4   Section        0  sys_exit.o(.text)
+    .text                                    0x000001f0   Section        2  use_no_semi.o(.text)
+    .text                                    0x000001f2   Section        0  indicate_semi.o(.text)
+    [Anonymous Symbol]                       0x000001f4   Section        0  system_mkl25z4.o(.text.SystemInit)
+    __arm_cp.0_0                             0x000001fc   Number         4  system_mkl25z4.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x00000200   Section        0  ir_sensor.o(.text.init_ir)
+    __arm_cp.0_0                             0x00000238   Number         4  ir_sensor.o(.text.init_ir)
+    [Anonymous Symbol]                       0x0000023c   Section        0  main.o(.text.main)
+    __arm_cp.0_0                             0x0000026c   Number         4  main.o(.text.main)
+    [Anonymous Symbol]                       0x00000270   Section        0  ir_sensor.o(.text.read_ir)
+    [Anonymous Symbol]                       0x0000028c   Section        0  main.o(.rodata.cst16)
     .ARM.__at_0x400                          0x00000400   Section       16  startup_mkl25z4.o(.ARM.__at_0x400)
-    [Anonymous Symbol]                       0x00000410   Section        0  ir_sensor.o(.text.get_position)
-    [Anonymous Symbol]                       0x0000047c   Section        0  ir_sensor.o(.text.init_ir_array)
-    [Anonymous Symbol]                       0x000004b4   Section        0  main.o(.text.main)
-    __arm_cp.0_0                             0x000004e8   Number         4  main.o(.text.main)
-    [Anonymous Symbol]                       0x000004ec   Section        0  ir_sensor.o(.text.read_ir)
-    fdiv_tab                                 0x00000506   Data          64  fdiv.o(.constdata)
-    .constdata                               0x00000506   Section       64  fdiv.o(.constdata)
-    [Anonymous Symbol]                       0x00000548   Section        0  main.o(.rodata..L__const.main.ir_cfg)
     .bss                                     0x1ffff000   Section       96  libspace.o(.bss)
     Heap_Mem                                 0x1ffff060   Data           0  startup_mkl25z4.o(HEAP)
     Stack_Mem                                0x1ffff060   Data         256  startup_mkl25z4.o(STACK)
@@ -443,32 +438,21 @@ Image Symbol Table
     __use_two_region_memory                  0x00000189   Thumb Code     2  heapauxi.o(.text)
     __rt_heap_escrow$2region                 0x0000018b   Thumb Code     2  heapauxi.o(.text)
     __rt_heap_expand$2region                 0x0000018d   Thumb Code     2  heapauxi.o(.text)
-    __aeabi_fdiv                             0x00000191   Thumb Code     0  fdiv.o(.text)
-    _fdiv                                    0x00000191   Thumb Code   334  fdiv.o(.text)
-    _frdiv                                   0x000002df   Thumb Code     8  fdiv.o(.text)
-    __aeabi_i2f_normalise                    0x000002f1   Thumb Code    72  fflti.o(.text)
-    __aeabi_i2f                              0x00000339   Thumb Code    16  fflti.o(.text)
-    _fflt                                    0x00000339   Thumb Code     0  fflti.o(.text)
-    __aeabi_ui2f                             0x00000349   Thumb Code     6  fflti.o(.text)
-    _ffltu                                   0x00000349   Thumb Code     0  fflti.o(.text)
-    __user_setup_stackheap                   0x0000034f   Thumb Code    62  sys_stackheap_outer.o(.text)
-    exit                                     0x0000038d   Thumb Code    16  exit.o(.text)
-    __user_libspace                          0x0000039d   Thumb Code     8  libspace.o(.text)
-    __user_perproc_libspace                  0x0000039d   Thumb Code     0  libspace.o(.text)
-    __user_perthread_libspace                0x0000039d   Thumb Code     0  libspace.o(.text)
-    _sys_exit                                0x000003a5   Thumb Code     8  sys_exit.o(.text)
-    __I$use$semihosting                      0x000003b1   Thumb Code     0  use_no_semi.o(.text)
-    __use_no_semihosting_swi                 0x000003b1   Thumb Code     2  use_no_semi.o(.text)
-    __semihosting_library_function           0x000003b3   Thumb Code     0  indicate_semi.o(.text)
-    SystemInit                               0x000003b5   Thumb Code     8  system_mkl25z4.o(.text.SystemInit)
-    init_ir                                  0x000003c1   Thumb Code    56  ir_sensor.o(.text.init_ir)
-    __I$use$fp                               0x000003fc   Number         0  usenofp.o(x$fpl$usenofp)
-    get_position                             0x00000411   Thumb Code   108  ir_sensor.o(.text.get_position)
-    init_ir_array                            0x0000047d   Thumb Code    54  ir_sensor.o(.text.init_ir_array)
-    main                                     0x000004b5   Thumb Code    52  main.o(.text.main)
-    read_ir                                  0x000004ed   Thumb Code    26  ir_sensor.o(.text.read_ir)
-    Region$$Table$$Base                      0x00000588   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000598   Number         0  anon$$obj.o(Region$$Table)
+    __user_setup_stackheap                   0x0000018f   Thumb Code    62  sys_stackheap_outer.o(.text)
+    exit                                     0x000001cd   Thumb Code    16  exit.o(.text)
+    __user_libspace                          0x000001dd   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x000001dd   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x000001dd   Thumb Code     0  libspace.o(.text)
+    _sys_exit                                0x000001e5   Thumb Code     8  sys_exit.o(.text)
+    __I$use$semihosting                      0x000001f1   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x000001f1   Thumb Code     2  use_no_semi.o(.text)
+    __semihosting_library_function           0x000001f3   Thumb Code     0  indicate_semi.o(.text)
+    SystemInit                               0x000001f5   Thumb Code     8  system_mkl25z4.o(.text.SystemInit)
+    init_ir                                  0x00000201   Thumb Code    56  ir_sensor.o(.text.init_ir)
+    main                                     0x0000023d   Thumb Code    48  main.o(.text.main)
+    read_ir                                  0x00000271   Thumb Code    26  ir_sensor.o(.text.read_ir)
+    Region$$Table$$Base                      0x0000029c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000002ac   Number         0  anon$$obj.o(Region$$Table)
     __libspace_start                         0x1ffff000   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x1ffff060   Data           0  libspace.o(.bss)
 
@@ -480,9 +464,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000149
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00000598, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000410, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000598, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000410, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -534,38 +518,30 @@ Memory Map of the image
     0x00000146   0x00000146   0x00000002   PAD
     0x00000148   0x00000148   0x00000040   Code   RO           30  * .text               startup_mkl25z4.o
     0x00000188   0x00000188   0x00000006   Code   RO           56    .text               c_p.l(heapauxi.o)
-    0x0000018e   0x0000018e   0x00000002   PAD
-    0x00000190   0x00000190   0x00000160   Code   RO           60    .text               fz_ps.l(fdiv.o)
-    0x000002f0   0x000002f0   0x0000005e   Code   RO           63    .text               fz_ps.l(fflti.o)
-    0x0000034e   0x0000034e   0x0000003e   Code   RO           88    .text               c_p.l(sys_stackheap_outer.o)
-    0x0000038c   0x0000038c   0x00000010   Code   RO           91    .text               c_p.l(exit.o)
-    0x0000039c   0x0000039c   0x00000008   Code   RO          103    .text               c_p.l(libspace.o)
-    0x000003a4   0x000003a4   0x0000000c   Code   RO          160    .text               c_p.l(sys_exit.o)
-    0x000003b0   0x000003b0   0x00000002   Code   RO          183    .text               c_p.l(use_no_semi.o)
-    0x000003b2   0x000003b2   0x00000000   Code   RO          185    .text               c_p.l(indicate_semi.o)
-    0x000003b2   0x000003b2   0x00000002   PAD
-    0x000003b4   0x000003b4   0x0000000c   Code   RO           39    .text.SystemInit    system_mkl25z4.o
-    0x000003c0   0x000003c0   0x0000003c   Code   RO           12    .text.init_ir       ir_sensor.o
-    0x000003fc   0x000003fc   0x00000000   Code   RO           70    x$fpl$usenofp       fz_ps.l(usenofp.o)
-    0x000003fc   0x000003fc   0x00000004   PAD
+    0x0000018e   0x0000018e   0x0000003e   Code   RO           88    .text               c_p.l(sys_stackheap_outer.o)
+    0x000001cc   0x000001cc   0x00000010   Code   RO           91    .text               c_p.l(exit.o)
+    0x000001dc   0x000001dc   0x00000008   Code   RO          103    .text               c_p.l(libspace.o)
+    0x000001e4   0x000001e4   0x0000000c   Code   RO          160    .text               c_p.l(sys_exit.o)
+    0x000001f0   0x000001f0   0x00000002   Code   RO          183    .text               c_p.l(use_no_semi.o)
+    0x000001f2   0x000001f2   0x00000000   Code   RO          185    .text               c_p.l(indicate_semi.o)
+    0x000001f2   0x000001f2   0x00000002   PAD
+    0x000001f4   0x000001f4   0x0000000c   Code   RO           39    .text.SystemInit    system_mkl25z4.o
+    0x00000200   0x00000200   0x0000003c   Code   RO           12    .text.init_ir       ir_sensor.o
+    0x0000023c   0x0000023c   0x00000034   Code   RO            2    .text.main          main.o
+    0x00000270   0x00000270   0x0000001a   Code   RO           14    .text.read_ir       ir_sensor.o
+    0x0000028a   0x0000028a   0x00000002   PAD
+    0x0000028c   0x0000028c   0x00000010   Data   RO            4    .rodata.cst16       main.o
+    0x0000029c   0x0000029c   0x00000010   Data   RO          238    Region$$Table       anon$$obj.o
+    0x000002ac   0x000002ac   0x00000154   PAD
     0x00000400   0x00000400   0x00000010   Code   RO           29    .ARM.__at_0x400     startup_mkl25z4.o
-    0x00000410   0x00000410   0x0000006c   Code   RO           18    .text.get_position  ir_sensor.o
-    0x0000047c   0x0000047c   0x00000036   Code   RO           16    .text.init_ir_array  ir_sensor.o
-    0x000004b2   0x000004b2   0x00000002   PAD
-    0x000004b4   0x000004b4   0x00000038   Code   RO            2    .text.main          main.o
-    0x000004ec   0x000004ec   0x0000001a   Code   RO           14    .text.read_ir       ir_sensor.o
-    0x00000506   0x00000506   0x00000040   Data   RO           61    .constdata          fz_ps.l(fdiv.o)
-    0x00000546   0x00000546   0x00000002   PAD
-    0x00000548   0x00000548   0x00000040   Data   RO            4    .rodata..L__const.main.ir_cfg  main.o
-    0x00000588   0x00000588   0x00000010   Data   RO          238    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x00000598, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x00000410, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region ER_ZI (Exec base: 0x1ffff000, Load base: 0x00000598, Size: 0x00000160, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x1ffff000, Load base: 0x00000410, Size: 0x00000160, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -581,15 +557,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       248          4          0          0          0       2675   ir_sensor.o
-        56          4         64          0          0       1300   main.o
+        86          4          0          0          0       2697   ir_sensor.o
+        52          4         16          0          0       1273   main.o
         80         44        192          0        256        920   startup_mkl25z4.o
         12          4          0          0          0       2591   system_mkl25z4.o
 
     ----------------------------------------------------------------------
-       398         56        272          0        256       7486   Object Totals
+       232         56        564          0        256       7481   Object Totals
          0          0         16          0          0          0   (incl. Generated)
-         2          0          0          0          0          0   (incl. Padding)
+         2          0        340          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -614,23 +590,19 @@ Image component sizes
         12          4          0          0          0         60   sys_exit.o
         62          0          0          0          0         80   sys_stackheap_outer.o
          2          0          0          0          0         68   use_no_semi.o
-       352         10         64          0          0         92   fdiv.o
-        94          0          0          0          0         92   fflti.o
-         0          0          0          0          0          0   usenofp.o
 
     ----------------------------------------------------------------------
-       696         26         66          0         96        732   Library Totals
-        10          0          2          0          0          0   (incl. Padding)
+       244         16          0          0         96        548   Library Totals
+         4          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
        240         16          0          0         96        548   c_p.l
-       446         10         64          0          0        184   fz_ps.l
 
     ----------------------------------------------------------------------
-       696         26         66          0         96        732   Library Totals
+       244         16          0          0         96        548   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -639,15 +611,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1094         82        338          0        352       7930   Grand Totals
-      1094         82        338          0        352       7930   ELF Image Totals
-      1094         82        338          0          0          0   ROM Totals
+       476         72        564          0        352       7829   Grand Totals
+       476         72        564          0        352       7829   ELF Image Totals
+       476         72        564          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 1432 (   1.40kB)
+    Total RO  Size (Code + RO Data)                 1040 (   1.02kB)
     Total RW  Size (RW Data + ZI Data)               352 (   0.34kB)
-    Total ROM Size (Code + RO Data + RW Data)       1432 (   1.40kB)
+    Total ROM Size (Code + RO Data + RW Data)       1040 (   1.02kB)
 
 ==============================================================================
 
