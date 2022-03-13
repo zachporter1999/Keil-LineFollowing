@@ -9,9 +9,9 @@ void init_ir(ir_cfg_t* cfg)
 	cfg->pt->PDDR &= ~(uint32_t)(1 << cfg->pin);
 }
 
-uint8_t read_ir(ir_cfg_t* cfg)
+uint8_t read_ir(ir_cfg_t* cfg, int active_state)
 {
-	return ((uint32_t)cfg->pt->PDIR & (uint32_t)(1 << cfg->pin)) > 0;
+	return (uint8_t)active_state ^ ((cfg->pt->PDIR & (1 << cfg->pin)) > 0);
 }
 
 void init_ir_array(ir_cfg_t* a_cfg, uint8_t n_cfg)
@@ -22,14 +22,14 @@ void init_ir_array(ir_cfg_t* a_cfg, uint8_t n_cfg)
 	}
 }
 
-float get_position(ir_cfg_t* a_cfg, uint8_t n_cfg)
+float get_position(ir_cfg_t* a_cfg, uint8_t n_cfg, int active_state)
 {
 	uint32_t sum = 0;
 	uint32_t weighted_sum = 0;
 	
 	for (int i = 0; i < n_cfg; i++)
 	{
-		uint8_t sensor_res = read_ir(&a_cfg[i]);
+		uint8_t sensor_res = read_ir(&a_cfg[i], active_state);
 		
 		sum += sensor_res;
 		weighted_sum += (uint8_t)(i + 1) * sensor_res;
