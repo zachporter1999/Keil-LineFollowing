@@ -14,7 +14,6 @@ int main(void)
 	for (;;)
 	{
 		// read arraY
-		line_position = get_position(ir_cfg, N_SENSORS);
+		line_position = get_position(ir_cfg, N_SENSORS, LINE_DETECTED_LOW);
 	}
-	
 }
