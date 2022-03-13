@@ -11,7 +11,7 @@ void init_ir(ir_cfg_t* cfg)
 
 uint8_t read_ir(ir_cfg_t* cfg)
 {
-	return ((uint32_t)cfg->pt->PDIR & (uint32_t)(1 << cfg->pin));
+	return ((uint32_t)cfg->pt->PDIR & (uint32_t)(1 << cfg->pin)) > 0;
 }
 
 void init_ir_array(ir_cfg_t* a_cfg, uint8_t n_cfg)

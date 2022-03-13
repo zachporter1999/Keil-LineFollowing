@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>./inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -357,7 +357,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\inc</IncludePath>
             </VariousControls>
           </Aads>
           <LDads>
@@ -381,22 +381,17 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>Source Group 1</GroupName>
+          <GroupName>src</GroupName>
           <Files>
-            <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>ir_sensor.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ir_sensor.h</FilePath>
-            </File>
             <File>
               <FileName>ir_sensor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\ir_sensor.c</FilePath>
+              <FilePath>.\src\ir_sensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\main.c</FilePath>
             </File>
           </Files>
         </Group>
