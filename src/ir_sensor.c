@@ -22,7 +22,13 @@ void init_ir_array(ir_cfg_t* a_cfg, uint8_t n_cfg)
 	}
 }
 
-float get_position(ir_cfg_t* a_cfg, uint8_t n_cfg, int active_state)
+double get_angle(
+	ir_cfg_t* a_cfg,
+	uint8_t n_cfg,
+	int active_state,
+	double angle_left_turn,
+	double angle_right_turn
+)
 {
 	uint32_t sum = 0;
 	uint32_t weighted_sum = 0;
@@ -39,5 +45,8 @@ float get_position(ir_cfg_t* a_cfg, uint8_t n_cfg, int active_state)
 	{
 		return -1;
 	}
-	return (float)weighted_sum / (float)sum;
+	
+	double line_position = (double)weighted_sum / (double)sum;
+	
+	return (line_position - 1) * (angle_right_turn - angle_left_turn) / (n_cfg - 1) + angle_left_turn;
 }

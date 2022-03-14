@@ -78,11 +78,19 @@ void init_ir_array(ir_cfg_t* a_cfg, uint8_t n_cfg);
  * Calculates the position of the line under the IR sensor array.
  *
  * Params:
- *   *a_cfg - The array of ir_cfg_t's to initialize sensors.
- *    n_cfg - The number of cfg's in *a_cfg.
- *   active_state - The level of the GPIO pin indicating the sensor has detected a line. (0 or 1).
+ *   *a_cfg            - The array of ir_cfg_t's to initialize sensors.
+ *    n_cfg            - The number of cfg's in *a_cfg.
+ *    active_state     - The level of the GPIO pin indicating the sensor has detected a line. (0 or 1).
+ *    angle_left_turn  - Limit for how far left the motor steers. (In an ideal case this angle should ne 0 degrees)
+ *    angle_right_turn - Limit for how far right the motor steers. (In an ideal case this angle should be 80 dgrees)
  *
  */
-float get_position(ir_cfg_t* a_cfg, uint8_t n_cfg, int active_state);
+double get_angle(
+	ir_cfg_t* a_cfg,
+	uint8_t n_cfg,
+	int active_state,
+	double angle_left_turn,
+	double angle_right_turn
+);
 
 #endif 
