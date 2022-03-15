@@ -4,6 +4,7 @@
 #include "LEDs.h"
 #include "adc.h"
 #include "motor.h"
+#include "timers.h"
 
 #define N_SENSORS 4
 #define ANGLE_LEFT_TURN 20
