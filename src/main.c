@@ -48,9 +48,10 @@ int main(void)
 
 		//block of code if no line is found
 		if(current_angle < 0){
+			Set_Stop()
 			counter ++;
 			if (counter > MAX_ERROR){
-				//send stop signal here
+				//send stop signal here as assume line has been lost
 			}
 			continue
 		}
@@ -64,10 +65,11 @@ int main(void)
 		// if steering is already close to max angle stop motor
 		if(difference < 0 && current_angle <5){
 			Set_Stop();
-		}
-		if(difference > 0 && current_angle >75){
+		}else if(difference > 0 && current_angle >75){
 			Set_Stop();
 		}
+
+		set_turn_pwm(difference)		
 
 		// led for live debugging
 		// if (line_position < 0)
