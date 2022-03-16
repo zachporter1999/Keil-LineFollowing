@@ -2,14 +2,26 @@
 #include "ir_sensor.h"
 #include "LEDs.h"
 
-#define N_SENSORS 4
-#define ANGLE_LEFT_TURN 20
-#define ANGLE_RIGHT_TURN 60
+// Steering limits in degrees
+#define ANGLE_LEFT_TURN 0
+#define ANGLE_RIGHT_TURN 80 // degrees
 
 int main(void)
 {	
 	double line_position = 0;
-	ir_cfg_t ir_cfg[N_SENSORS] = {IR_PORTC_CFG(3), IR_PORTC_CFG(4), IR_PORTC_CFG(5), IR_PORTC_CFG(6)};
+	
+	// Only able to use 7 sensots
+	#define N_SENSORS 7
+	
+	ir_cfg_t ir_cfg[N_SENSORS] = {
+		IR_PORTC_CFG(0), // Left Most IR
+		IR_PORTC_CFG(3),
+		IR_PORTC_CFG(4),
+		IR_PORTC_CFG(5),
+		IR_PORTC_CFG(6),
+		IR_PORTC_CFG(10),
+		IR_PORTA_CFG(17) // Right Most IR
+	};
 	
 	init_RGB_LEDs();
 	
@@ -25,6 +37,8 @@ int main(void)
 											LINE_DETECTED_HIGH,
 											ANGLE_LEFT_TURN, 
 											ANGLE_RIGHT_TURN);
+		
+		// Add steering control down here 
 		
 		// led for live debugging
 		if (line_position < 0)
