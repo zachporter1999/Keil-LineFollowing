@@ -85,12 +85,12 @@ void init_ir_array(ir_cfg_t* a_cfg, uint8_t n_cfg);
  *    angle_right_turn - Limit for how far right the motor steers. (In an ideal case this angle should be 80 dgrees)
  *
  */
-double get_angle(
+float get_angle(
 	ir_cfg_t* a_cfg,
 	uint8_t n_cfg,
 	int active_state,
-	double angle_left_turn,
-	double angle_right_turn
+	float angle_left_turn,
+	float angle_right_turn
 );
 
 #endif 
