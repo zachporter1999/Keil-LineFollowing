@@ -1,5 +1,6 @@
 #include <MKL25Z4.H>
 #include "LEDs.h"
+#include "adc.h"
 
 void Init_ADC(void) {
 	
@@ -8,6 +9,7 @@ void Init_ADC(void) {
 	ADC0->CFG1 = 0x0C; // Select 16 bit resolution
 	ADC0->SC2 = 0;
 	ADC0->CFG2|= 0x3;
+
 }
 
 double Get_Position(){
@@ -20,9 +22,9 @@ double Get_Position(){
 	res = ADC0->R[0];
 	voltage = VREF*(res/0xffff);
 	//uncomment when voltage range is found
-	//angle = ((voltage-MinVoltage) * VoltSlope);
-	return voltage;
-	//return angle;
+	angle = ((voltage-MINVoltage) / VoltSloap);
+	//return voltage;
+	return angle;
 }
 
 

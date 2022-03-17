@@ -4,10 +4,10 @@
 
 #define VREF (3.3)
 //WRITE VOLTAGE RANGE HERE
-#define MINVoltage (##)
-#define MAXVoltage (##)
+#define MINVoltage (0.973)
+#define MAXVoltage (2.174)
 #define RANGE (80)
-#define VoltSloap ((MaxVoltage-MinVoltage)/ RANGE)
+#define VoltSloap ((MAXVoltage-MINVoltage)/ RANGE)
 
 void Init_ADC(void);
 double Get_Position();
