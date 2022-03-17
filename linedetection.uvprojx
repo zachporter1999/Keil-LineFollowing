@@ -413,16 +413,6 @@
               <FileType>1</FileType>
               <FilePath>.\src\timers.c</FilePath>
             </File>
-            <File>
-              <FileName>LCD_4bit.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\LCD_4bit.c</FilePath>
-            </File>
-            <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\delay.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -457,16 +447,6 @@
               <FileName>timers.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\inc\timers.h</FilePath>
-            </File>
-            <File>
-              <FileName>lcd_4bit.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\inc\lcd_4bit.h</FilePath>
-            </File>
-            <File>
-              <FileName>delay.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\inc\delay.h</FilePath>
             </File>
           </Files>
         </Group>
