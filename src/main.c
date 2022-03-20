@@ -11,6 +11,10 @@
 #define ANGLE_RIGHT_TURN 80
 #define MAX_ERROR 90
 
+#define INTERRUPT_PORT PORTE
+#define INTERRUPT_PT   PTE
+#define INTERRUPT_PIN  31
+#define INTERRUPT_SCGC SIM_SCGC5_PORTE_MASK
 
 void set_turn_pwm(double diff){
 	// adjust vduty based on how Set_PWM_Value_Ch1 works
@@ -24,6 +28,22 @@ void set_turn_pwm(double diff){
 	}
 }
 
+void setup_interrupt_pin()
+{
+	SIM->SCGC5 |= INTERRUPT_SCGC;
+	
+	INTERRUPT_PORT->PCR[INTERRUPT_PIN] &= ~(uint32_t)(PORT_PCR_MUX(1));
+	
+	INTERRUPT_PT->PDDR |= (uint32_t)(1 << INTERRUPT_PIN);
+	INTERRUPT_PT->PCOR |= (uint32_t)(1 << INTERRUPT_PIN);
+}
+
+void send_interrupt_signal()
+{
+	INTERRUPT_PT->PSOR |= (uint32_t)(1 << INTERRUPT_PIN);
+	delay(100);
+	INTERRUPT_PT->PCOR |= (uint32_t)(1 << INTERRUPT_PIN);
+}
 int main(void)
 {	
 
