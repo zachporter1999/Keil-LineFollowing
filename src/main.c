@@ -82,6 +82,7 @@ int main(void)
 		//block of code if no line is found
 		if(new_angle < 0){
 			Set_Stop();
+			control_RGB_LEDs(0, 0, 1);
 			counter ++;
 			if (counter > MAX_ERROR){
 				//send stop signal here as assume line has been lost
