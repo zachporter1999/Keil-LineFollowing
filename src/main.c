@@ -72,12 +72,12 @@ int main(void)
 
 		difference = new_angle - current_angle;
 		test = fabs (difference);
-		if(test<5){//if difference is within 5 degrees stop turning
+		if(test<3){//if difference is within 5 degrees stop turning
 			Set_Stop();
 			continue;
 		}
 		// if steering is already close to max angle stop motor
-		if((difference < 0 && current_angle <5) || (difference > 0 && current_angle >75)){
+		if((difference < 0 && current_angle <2.5) || (difference > 0 && current_angle >77.5)){
 			Set_Stop();
 			continue;
 		}

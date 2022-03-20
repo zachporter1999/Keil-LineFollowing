@@ -4,8 +4,8 @@
 
 #define VREF (3.3)
 //WRITE VOLTAGE RANGE HERE
-#define MINVoltage (0.973)
-#define MAXVoltage (2.174)
+#define MINVoltage (1.13)
+#define MAXVoltage (2.24)
 #define RANGE (80)
 #define VoltSloap ((MAXVoltage-MINVoltage)/ RANGE)
 
