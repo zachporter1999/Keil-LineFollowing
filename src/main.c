@@ -16,6 +16,12 @@
 #define INTERRUPT_PIN  31
 #define INTERRUPT_SCGC SIM_SCGC5_PORTE_MASK
 
+void delay(uint32_t dly)
+{
+	volatile uint32_t t;
+	for (t = dly * 10000; t > 0; t--);
+}
+
 void set_turn_pwm(double diff){
 	// adjust vduty based on how Set_PWM_Value_Ch1 works
 	uint8_t duty = fabs(diff) /RANGE * 100; //double check this conversion
