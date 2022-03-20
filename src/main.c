@@ -50,6 +50,7 @@ void send_interrupt_signal()
 	delay(100);
 	INTERRUPT_PT->PCOR |= (uint32_t)(1 << INTERRUPT_PIN);
 }
+
 int main(void)
 {	
 
@@ -61,6 +62,7 @@ int main(void)
 	int counter = 0;
 	
 	ir_cfg_t ir_cfg[N_SENSORS] = {
+		// Left
 		IR_PORTA_CFG(17),
 		IR_PORTC_CFG(10),
 		IR_PORTC_CFG(6),
@@ -68,6 +70,7 @@ int main(void)
 		IR_PORTC_CFG(4),
 		IR_PORTC_CFG(3),
 		IR_PORTC_CFG(0)
+		// Right
 	};
 	
 	init_ir_array(ir_cfg, N_SENSORS);
