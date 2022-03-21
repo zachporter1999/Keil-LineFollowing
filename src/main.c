@@ -10,6 +10,7 @@
 #define ANGLE_LEFT_TURN 0
 #define ANGLE_RIGHT_TURN 80
 #define MAX_ERROR 90
+#define DUTY_MIN 30
 
 #define INTERRUPT_PORT PORTE
 #define INTERRUPT_PT   PTE
@@ -25,6 +26,9 @@ void delay(uint32_t dly)
 void set_turn_pwm(double diff){
 	// adjust vduty based on how Set_PWM_Value_Ch1 works
 	uint8_t duty = fabs(diff) /RANGE * 100; //double check this conversion
+	if (duty < DUTY_MIN){
+		duty = DUTY_MIN;
+	}
 	if(diff < 0){
 		Set_Forward(duty);
 		control_RGB_LEDs(1,0,0);
@@ -102,7 +106,7 @@ int main(void)
 
 		difference = new_angle - current_angle;
 		test = fabs (difference);
-		if(test<3){//if difference is within 5 degrees stop turning
+		if(test<5){//if difference is within 5 degrees stop turning
 			Set_Stop();
 			continue;
 		}
